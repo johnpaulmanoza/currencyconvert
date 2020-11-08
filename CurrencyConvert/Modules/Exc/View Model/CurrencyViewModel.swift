@@ -63,14 +63,36 @@ public class CurrencyViewModel {
     Store the selected currency for conversion
      
     - Parameters:
-     - symbol: Selected currency symbol
-     - rate: Selected currency rate
+     - currencySymbol: Selected currency symbol
      
      */
-    func storeSelectedCurrency(symbol: String, rate: Double) {
+    func storeSelectedCurrency(currencySymbol: String) {
         
-        let data: [String: Any] = ["symbol": symbol, "rate": rate]
-        UserDefaults.standard.set(data, forKey: "selected_currency")
-        UserDefaults.standard.synchronize()
+        do {
+            
+            let realm = try Realm()
+            
+            let currencies = realm.objects(Currency.self)
+            
+            guard
+                let selectedCurrency = currencies.filter("currencySymbol == '\(currencySymbol)'").first
+            else
+                { return }
+            
+            // remove previous selections
+            _ = try currencies.map({ (item) -> Void in
+                try realm.write {
+                    item.currencyIsSelected = false
+                }
+            })
+            
+            // set current selection
+            try realm.write {
+                selectedCurrency.currencyIsSelected = true
+            }
+            
+        } catch _ {
+
+        }
     }
 }

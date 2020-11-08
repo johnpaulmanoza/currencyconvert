@@ -50,6 +50,15 @@ public class ExcViewModel {
             .disposed(by: bag)
     }
     
+    func startConversion(amount: Double) {
+        
+        
+    }
+    
+    private func selectedCurrency() {
+        
+    }
+    
     /**
      
     Convert currency

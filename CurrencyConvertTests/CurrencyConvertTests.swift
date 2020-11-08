@@ -42,29 +42,4 @@ class CurrencyConvertTests: XCTestCase {
         // then
         XCTAssertEqual(sut, endingBalance)
     }
-    
-    func testSavingOfSelectedCurrency() {
-        
-        let vm = CurrencyViewModel()
-        let symbol = "CAD"
-        let rate = 1.5525
-        
-        // when
-        vm.storeSelectedCurrency(symbol: symbol, rate: rate)
-        
-        guard
-            let sut = UserDefaults.standard.dictionary(forKey: "selected_currency")
-        else {
-            // clear the data
-            UserDefaults.standard.removeObject(forKey: "selected_currency")
-            XCTFail("cannot access selected currency")
-            return
-        }
-        
-        // clear the data
-        UserDefaults.standard.removeObject(forKey: "selected_currency")
-        
-        XCTAssertEqual(sut["symbol"] as? String, symbol)
-        XCTAssertEqual(sut["rate"] as? Double, rate)
-    }
 }
