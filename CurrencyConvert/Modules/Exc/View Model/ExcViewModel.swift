@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RealmSwift
 
 public class ExcViewModel {
     
@@ -52,46 +53,10 @@ public class ExcViewModel {
     
     func startConversion(amount: Double) {
         
+        guard let currentRate = excService.selectedCurrencyRate() else { return }
         
-    }
-    
-    private func selectedCurrency() {
+        let convertedValue = excService.convert(sellAmount: amount, rate: currentRate)
         
-    }
-    
-    /**
-     
-    Convert currency
-    
-    - Parameters:
-     - sellAmount: amounth to convert
-     - rate: conversion rate
- 
-    - Returns:
-     - Converted amount
-     
-    */
-    func convert(sellAmount: Double, rate: Double) -> Double {
-        return sellAmount * rate
-    }
-    
-    /**
-     
-    Convert currency with commission rate
-     
-    - Parameters:
-     - sellAmount: amounth to convert
-     - rate: conversion rate
-     - commissionRate: charge for conversion (should be in percentage, e.g. if 7% etc)
-     - balance: remaining balance in the account
-     
-    - Returns:
-     - ending balance with the deducted amount converted and commission
-     
-     */
-    func convertWithEndingBalance(sellAmount: Double, rate: Double, commissionRate: Double, balance: Double) -> Double {
-        let conversion = convert(sellAmount: sellAmount, rate: rate)
-        let commissionFee = (commissionRate / 100) * sellAmount
-        return balance - (conversion + commissionFee)
+        
     }
 }

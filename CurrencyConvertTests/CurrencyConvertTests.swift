@@ -14,13 +14,13 @@ class CurrencyConvertTests: XCTestCase {
     func testConversion() {
         
         // given
-        let vm = ExcViewModel()
+        let service = ExcService()
         let sellAmount = 100.0 // eur
         let rate = 1.18746 // eur to usd
         let convertedAmount = 118.746 // to receive in usd
         
         // when
-        let sut = vm.convert(sellAmount: sellAmount, rate: rate)
+        let sut = service.convert(sellAmount: sellAmount, rate: rate)
         
         // then
         XCTAssertEqual(sut, convertedAmount)
@@ -29,7 +29,7 @@ class CurrencyConvertTests: XCTestCase {
     func testConversionWithEndingBalance() {
         
         // given
-        let vm = ExcViewModel()
+        let service = ExcService()
         let initialBalance = 1000.0
         let sellAmount = 100.0 // eur
         let rate = 1.18746 // eur to usd
@@ -37,7 +37,7 @@ class CurrencyConvertTests: XCTestCase {
         let endingBalance = 880.554 // ending balance in eur wallet
         
         // when
-        let sut = vm.convertWithEndingBalance(sellAmount: sellAmount, rate: rate, commissionRate: commissionRate, balance: initialBalance)
+        let sut = service.convertWithEndingBalance(sellAmount: sellAmount, rate: rate, commissionRate: commissionRate, balance: initialBalance)
         
         // then
         XCTAssertEqual(sut, endingBalance)

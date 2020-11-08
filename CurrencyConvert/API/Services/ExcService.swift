@@ -18,6 +18,39 @@ public class ExcService {
        
     }
     
+    /**
+     Convert currency
+   
+     - Parameters:
+        - sellAmount: amounth to convert
+        - rate: conversion rate
+
+     - Returns:
+        - Converted amount
+     
+   */
+   func convert(sellAmount: Double, rate: Double) -> Double {
+       return sellAmount * rate
+   }
+       
+   /**
+     Convert currency with commission rate
+    
+     - Parameters:
+        - sellAmount: amounth to convert
+        - rate: conversion rate
+        - commissionRate: charge for conversion (should be in percentage, e.g. if 7% etc)
+        - balance: remaining balance in the account
+    
+     - Returns:
+        - ending balance with the deducted amount converted and commission
+    
+    */
+    func convertWithEndingBalance(sellAmount: Double, rate: Double, commissionRate: Double, balance: Double) -> Double {
+       let conversion = convert(sellAmount: sellAmount, rate: rate)
+       let commissionFee = (commissionRate / 100) * sellAmount
+       return balance - (conversion + commissionFee)
+    }
     
     /**
      
@@ -115,4 +148,69 @@ public class ExcService {
 
         }
     }
+    
+    /**
+     
+    Store the selected currency for conversion
+     
+    - Parameters:
+     - currencySymbol: Selected currency symbol
+     
+     */
+    func storeSelectedCurrency(currencySymbol: String) {
+        
+        do {
+            
+            let realm = try Realm()
+            
+            let currencies = realm.objects(Currency.self)
+            
+            guard
+                let selectedCurrency = currencies.filter("currencySymbol == '\(currencySymbol)'").first
+            else
+                { return }
+            
+            // remove previous selections
+            _ = try currencies.map({ (item) -> Void in
+                try realm.write {
+                    item.currencyIsSelected = false
+                }
+            })
+            
+            // set current selection
+            try realm.write {
+                selectedCurrency.currencyIsSelected = true
+            }
+            
+        } catch _ {
+
+        }
+    }
+    
+    /**
+     
+    Get currency rate of selected currency
+     
+     */
+    func selectedCurrencyRate() -> Double? {
+        
+        do {
+            
+            let realm = try Realm()
+            let currencies = realm.objects(Currency.self)
+            
+            guard
+                let selectedCurrency = currencies.filter("currencySymbol == true").first
+            else
+                { return nil }
+            
+            return selectedCurrency.currencyRate
+            
+        } catch _ {
+
+            return nil
+        }
+    }
+    
+    func commitConversion(value: )
 }

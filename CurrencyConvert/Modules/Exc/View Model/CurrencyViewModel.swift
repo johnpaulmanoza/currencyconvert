@@ -68,31 +68,6 @@ public class CurrencyViewModel {
      */
     func storeSelectedCurrency(currencySymbol: String) {
         
-        do {
-            
-            let realm = try Realm()
-            
-            let currencies = realm.objects(Currency.self)
-            
-            guard
-                let selectedCurrency = currencies.filter("currencySymbol == '\(currencySymbol)'").first
-            else
-                { return }
-            
-            // remove previous selections
-            _ = try currencies.map({ (item) -> Void in
-                try realm.write {
-                    item.currencyIsSelected = false
-                }
-            })
-            
-            // set current selection
-            try realm.write {
-                selectedCurrency.currencyIsSelected = true
-            }
-            
-        } catch _ {
-
-        }
+        excService.storeSelectedCurrency(currencySymbol: currencySymbol)
     }
 }
