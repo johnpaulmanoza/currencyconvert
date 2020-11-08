@@ -13,6 +13,7 @@ target 'CurrencyConvert' do
   pod 'RxDataSources',          '4.0.1'
   pod 'ObjectMapper',           '3.4.2'
   pod 'RealmSwift',             '3.19.1'
+  pod "RxRealm",                '1.0.0'
   
   pod 'JGProgressHUD',          '2.1'
 
