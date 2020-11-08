@@ -6,10 +6,21 @@ target 'CurrencyConvert' do
   use_frameworks!
 
   # Pods for CurrencyConvert
+  pod 'Alamofire',              '4.8.2'
+  pod 'AlamofireObjectMapper',  '5.2.0'
+  pod 'RxSwift',                '5.1.0'
+  pod 'RxCocoa',                '5.1.0'
+  pod 'RxDataSources',          '4.0.1'
+  pod 'ObjectMapper',           '3.4.2'
+  pod 'RealmSwift',             '3.19.1'
+  
+  pod 'JGProgressHUD',          '2.1'
 
   target 'CurrencyConvertTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RxBlocking',             '5.1.0'
+    pod 'RxTest',                 '5.1.0'
   end
 
 end
