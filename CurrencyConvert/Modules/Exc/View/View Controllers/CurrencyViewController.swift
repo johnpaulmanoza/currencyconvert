@@ -48,12 +48,9 @@ class CurrencyViewController: UIViewController {
     private func observe() {
         
         // Update Loader Status
-        _ = viewModel.isLoading.asObservable()
-            .subscribe(onNext: { [weak this = self] (isloading) in
-                guard let this = this else { return }
-                _ = isloading
-                    ? this.loading.show(in: this.view)
-                    : this.loading.dismiss(animated: true)
+        _ = navigationItem.rightBarButtonItem?.rx.tap.asObservable()
+            .subscribe(onNext: { [weak this = self] (_) in
+                this?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: bag)
     
@@ -64,12 +61,12 @@ class CurrencyViewController: UIViewController {
             )
             .subscribe(onNext: { [weak this = self] (indexPath, model) in
                 this?.tableView.deselectRow(at: indexPath, animated: true)
-//                switch model {
-//                case .currencyItem(let data):
-//
-//                default:
-//                    break
-//                }
+                switch model {
+                case .currencyItem(let data):
+                    guard let currency = data.currency else { return }
+                    // store the selected
+                    this?.viewModel.storeSelectedCurrency(symbol: currency.currencySymbol, rate: currency.currencyRate)
+                }
             })
             .disposed(by: bag)
     }
