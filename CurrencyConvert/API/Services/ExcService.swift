@@ -54,7 +54,7 @@ public class ExcService {
                 realm.create(ExcRate.self, value: item, update: .all)
             }
             
-            // update rate from currency object
+            // seed currency objects
             let values = [item.exchangeRateAUD,
                           item.exchangeRateCAD,
                           item.exchangeRateJPY,
@@ -82,6 +82,17 @@ public class ExcService {
                         currency.currencyRate = value
                     }
                 }
+            
+            // seed wallet object if has no value
+            if realm.objects(Wallet.self).count == 0 {
+                let initialWallet = Wallet()
+                initialWallet.walletBalanceCurrency = "EUR"
+                initialWallet.walletId = 1 // user id is preferred
+                try realm.write {
+                    initialWallet.walletBalanceAmount = 1000.0 // initial balance of 1000 EUR
+                    realm.create(Wallet.self, value: initialWallet, update: .all)
+                }
+            }
             
         } catch _ {
 

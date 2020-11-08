@@ -48,7 +48,7 @@ public class ExcRate: Object, Mappable {
     }
 }
 
-public class Currency: Object, Mappable {
+public class Currency: Object {
 
     @objc dynamic public var currencySymbol: String = ""
     @objc dynamic public var currencyRate: Double = 0.0
@@ -57,13 +57,38 @@ public class Currency: Object, Mappable {
         self.init()
     }
     
-    public func mapping(map: Map) {
-        
-        currencySymbol  <- map["symbol"]
-        currencyRate    <- map["rate"]
+    public override class func primaryKey() -> String {
+        return "currencySymbol"
+    }
+}
+
+public class Balance: Object {
+    
+    @objc dynamic public var balanceCurrency: String = ""
+    @objc dynamic public var balanceAmount: Double = 0.0
+    
+    public required convenience init?(map: Map) {
+        self.init()
     }
     
     public override class func primaryKey() -> String {
-        return "currencySymbol"
+        return "balanceCurrency"
+    }
+}
+
+public class Wallet: Object {
+
+    @objc dynamic public var walletId: Int = 0
+    @objc dynamic public var walletBalanceCurrency: String = ""
+    @objc dynamic public var walletBalanceAmount: Double = 0.0
+    
+    let walletBalances = List<Balance>()
+    
+    public required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    public override class func primaryKey() -> String {
+        return "walletId"
     }
 }
