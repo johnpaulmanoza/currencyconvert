@@ -13,10 +13,9 @@ import RxSwift
 public class ExcService {
     
     private let manager = APIManager()
-    private let realm: Realm!
-    
+
     init() {
-        realm = try? Realm()
+       
     }
     
     
@@ -49,9 +48,41 @@ public class ExcService {
     private func storeExcRate(item: ExcRate) {
         
         do {
+            let realm = try Realm()
+            
             try realm.write {
                 realm.create(ExcRate.self, value: item, update: .all)
             }
+            
+            // update rate from currency object
+            let values = [item.exchangeRateAUD,
+                          item.exchangeRateCAD,
+                          item.exchangeRateJPY,
+                          item.exchangeRateUSD,
+                          item.exchangeRatePHP,
+                          item.exchangeRateGBP]
+            
+            let indices = ["AUD",
+                           "CAD",
+                           "JPY",
+                           "USD",
+                           "PHP",
+                           "GBP"]
+        
+            _ = try zip(values, indices)
+                .map { (value, key) -> Void in
+                    
+                    guard
+                        let currency = realm.objects(Currency.self).filter("currencySymbol == '\(key)'").first
+                    else
+                        { return }
+                    
+                    // update currency
+                    try realm.write {
+                        currency.currencyRate = value
+                    }
+                }
+            
         } catch _ {
 
         }
@@ -65,6 +96,7 @@ public class ExcService {
     private func resetExcRateItems() {
         
         do {
+            let realm = try Realm()
             try realm.write {
                 let items = realm.objects(ExcRate.self); realm.delete(items)
             }

@@ -29,6 +29,32 @@ class RealmManager {
         let config = Realm.Configuration(schemaVersion: schemaVersion(), migrationBlock: { migration, oldSchemaVersion in })
         Realm.Configuration.defaultConfiguration = config
         
+        // seed initial data
+        seedData()
+        
         print("Realm path -->", config.fileURL?.absoluteString ?? "File can't found")
+    }
+    
+    public func seedData() {
+        
+        let symbols = ["CAD", "AUD", "JPY", "USD", "PHP", "GBP"]
+        
+        do {
+            let realm = try Realm()
+            
+            let items = symbols
+                .map({ (symbol) -> Currency in
+                    let item = Currency()
+                    item.currencySymbol = symbol
+                    return item
+                })
+            
+            try realm.write {
+                _ = items.map { realm.create(Currency.self, value: $0, update: .all) }
+            }
+            
+        } catch _ {
+
+        }
     }
 }
