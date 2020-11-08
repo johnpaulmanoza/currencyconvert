@@ -40,12 +40,17 @@ class RealmManager {
         let symbols = ["CAD", "AUD", "JPY", "USD", "PHP", "GBP"]
         
         do {
+
             let realm = try Realm()
+            
+            // Skip seeding if table have contents
+            guard realm.objects(Currency.self).count == 0 else { return }
             
             let items = symbols
                 .map({ (symbol) -> Currency in
                     let item = Currency()
                     item.currencySymbol = symbol
+                    item.currencyIsSelected = symbol == "USD" // initial selected value is USD
                     return item
                 })
             

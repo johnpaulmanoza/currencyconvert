@@ -52,6 +52,7 @@ public class Currency: Object {
 
     @objc dynamic public var currencySymbol: String = ""
     @objc dynamic public var currencyRate: Double = 0.0
+    @objc dynamic public var currencyIsSelected: Bool = false
     
     public required convenience init?(map: Map) {
         self.init()
