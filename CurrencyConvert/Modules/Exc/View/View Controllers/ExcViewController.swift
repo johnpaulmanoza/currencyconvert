@@ -63,5 +63,6 @@ class ExcViewController: UIViewController {
     
     @IBAction func tapSubmitButton(_ sender: Any) {
         
+        viewModel.commitConversion(amount: 120)
     }
 }

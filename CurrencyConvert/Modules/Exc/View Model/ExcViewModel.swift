@@ -51,12 +51,11 @@ public class ExcViewModel {
             .disposed(by: bag)
     }
     
-    func startConversion(amount: Double) {
+    func commitConversion(amount: Double) {
         
-        guard let currentRate = excService.selectedCurrencyRate() else { return }
-        
-        let convertedValue = excService.convert(sellAmount: amount, rate: currentRate)
-        
-        
+        excService.commitConversion(amount: amount) { (convertedValue, error) in
+            guard error == nil else { print("has error", error); return }
+            print("total converted value", convertedValue)
+        }
     }
 }

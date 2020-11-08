@@ -28,10 +28,10 @@ public class ExcService {
      - Returns:
         - Converted amount
      
-   */
-   func convert(sellAmount: Double, rate: Double) -> Double {
+    */
+    func convert(sellAmount: Double, rate: Double) -> Double {
        return sellAmount * rate
-   }
+    }
        
    /**
      Convert currency with commission rate
@@ -188,11 +188,9 @@ public class ExcService {
     }
     
     /**
-     
-    Get currency rate of selected currency
-     
+     Get selected currency
      */
-    func selectedCurrencyRate() -> Double? {
+    func selectedCurrency() -> Currency? {
         
         do {
             
@@ -200,11 +198,11 @@ public class ExcService {
             let currencies = realm.objects(Currency.self)
             
             guard
-                let selectedCurrency = currencies.filter("currencySymbol == true").first
+                let selectedCurrency = currencies.filter("currencyIsSelected == true").first
             else
                 { return nil }
             
-            return selectedCurrency.currencyRate
+            return selectedCurrency
             
         } catch _ {
 
@@ -212,5 +210,122 @@ public class ExcService {
         }
     }
     
-    func commitConversion(value: )
+    func walletCurrentBalance() -> Double {
+        
+        do {
+               
+            let realm = try Realm()
+            let currentWallet = realm.objects(Wallet.self).first
+            
+            return currentWallet?.walletBalanceAmount ?? 0
+            
+        } catch _ {
+            
+            return 0
+        }
+    }
+    
+    /**
+    Deduct an amount into the current wallet
+     
+     - Parameters:
+        - amount: Amount to add into the balance
+     */
+    private func deductAmountToCurrentWallet(amount: Double) {
+        
+        do {
+            
+            let realm = try Realm()
+            
+            guard
+                let currentWallet = realm.objects(Wallet.self).first
+            else
+                { return }
+            
+            let newAmount = currentWallet.walletBalanceAmount - amount
+            
+            try realm.write {
+                currentWallet.walletBalanceAmount = newAmount
+            }
+            
+        } catch _ {
+
+        }
+    }
+    
+    /**
+    Create a new balance or update an existing balance in the wallet
+     
+     - Parameters:
+        - amount: Amount to add into the balance
+        - symbol: Currency where to put this balance
+     */
+    private func createUpdateBalance(amount: Double, symbol: String) {
+        
+        do {
+            
+            let realm = try Realm()
+            let currentWallet = realm.objects(Wallet.self).first
+            
+            var balance: Balance!
+            var isNew = false
+            
+            // get or create a new balance
+            if let existingBalance = currentWallet?.walletBalances.filter("balanceCurrency == '\(symbol)'").first {
+                balance = existingBalance; isNew = false
+            } else {
+                balance = Balance(); isNew = true
+            }
+
+            try realm.write {
+                
+                // update balance amount or set
+                if isNew == false {
+                    balance.balanceAmount = balance.balanceAmount + amount
+                } else {
+                    balance.balanceAmount = amount
+                }
+                
+                if isNew {
+                    // update balance currency symbol
+                    balance.balanceCurrency = symbol
+                    
+                    // update current wallet
+                    currentWallet?.walletBalances.append(balance)
+                }
+                
+                // store balance
+                realm.create(Balance.self, value: balance!, update: .all)
+            }
+            
+        } catch _ {
+
+        }
+    }
+    
+    func commitConversion(amount: Double, completion: (Double?, String?) -> Void) {
+        
+        guard let currentRate = selectedCurrency()?.currencyRate, let currentSymbol = selectedCurrency()?.currencySymbol else {
+            completion(nil, "No selected currency")
+            return
+        }
+        
+        // 1. Compute values
+        let convertedValue = convert(sellAmount: amount, rate: currentRate)
+        
+        // 1.1 Check if wallet has the sufficient value before conversion
+        guard walletCurrentBalance() > amount else {
+            completion(nil, "Insufficient Balance")
+            return
+        }
+
+        // 2. Deduct value to current wallet
+        deductAmountToCurrentWallet(amount: amount)
+
+        // 3. Create a balance to new/existing wallet
+        createUpdateBalance(amount: convertedValue, symbol: currentSymbol)
+        
+        // 4. Display results
+        completion(convertedValue, "")
+    }
 }
