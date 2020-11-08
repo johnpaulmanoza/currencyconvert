@@ -53,9 +53,10 @@ public class ExcViewModel {
     
     func commitConversion(amount: Double) {
         
-        excService.commitConversion(amount: amount) { (convertedValue, error) in
-            guard error == nil else { print("has error", error); return }
-            print("total converted value", convertedValue)
+        excService.commitConversion(amount: amount) { (convertedAmount, commissionFee, error) in
+            guard error == nil else { print("has error", error!); return }
+            guard let convertedAmount = convertedAmount else { return }
+            print("total converted value", convertedAmount, commissionFee)
         }
     }
 }

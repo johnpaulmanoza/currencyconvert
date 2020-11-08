@@ -26,20 +26,19 @@ class CurrencyConvertTests: XCTestCase {
         XCTAssertEqual(sut, convertedAmount)
     }
     
-    func testConversionWithEndingBalance() {
+    func testConversionWithCommission() {
         
         // given
         let service = ExcService()
-        let initialBalance = 1000.0
         let sellAmount = 100.0 // eur
         let rate = 1.18746 // eur to usd
         let commissionRate = 0.7 // 0.7% Rate
-        let endingBalance = 880.554 // ending balance in eur wallet
+        let convertedAmount = 119.446 // to receive in usd
         
         // when
-        let sut = service.convertWithEndingBalance(sellAmount: sellAmount, rate: rate, commissionRate: commissionRate, balance: initialBalance)
+        let sut = service.convertWithComission(sellAmount: sellAmount, rate: rate, commissionRate: commissionRate)
         
         // then
-        XCTAssertEqual(sut, endingBalance)
+        XCTAssertEqual(sut, convertedAmount)
     }
 }

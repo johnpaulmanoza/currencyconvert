@@ -40,16 +40,30 @@ public class ExcService {
         - sellAmount: amounth to convert
         - rate: conversion rate
         - commissionRate: charge for conversion (should be in percentage, e.g. if 7% etc)
-        - balance: remaining balance in the account
     
      - Returns:
-        - ending balance with the deducted amount converted and commission
+        - total conversion rate and commission fee
     
     */
-    func convertWithEndingBalance(sellAmount: Double, rate: Double, commissionRate: Double, balance: Double) -> Double {
+    func convertWithComission(sellAmount: Double, rate: Double, commissionRate: Double) -> Double {
        let conversion = convert(sellAmount: sellAmount, rate: rate)
        let commissionFee = (commissionRate / 100) * sellAmount
-       return balance - (conversion + commissionFee)
+       return conversion + commissionFee
+    }
+    
+    /**
+     Compute commission fee
+    
+     - Parameters:
+        - sellAmount: amounth to convert
+        - commissionRate: charge for conversion (should be in percentage, e.g. if 7% etc)
+    
+     - Returns:
+        - commission amount
+    
+    */
+    func computeCommissionFee(sellAmount: Double, commissionRate: Double) -> Double {
+        return (commissionRate / 100) * sellAmount
     }
     
     /**
@@ -210,18 +224,18 @@ public class ExcService {
         }
     }
     
-    func walletCurrentBalance() -> Double {
+    func currentWallet() -> Wallet? {
         
         do {
                
             let realm = try Realm()
             let currentWallet = realm.objects(Wallet.self).first
             
-            return currentWallet?.walletBalanceAmount ?? 0
+            return currentWallet
             
         } catch _ {
             
-            return 0
+            return nil
         }
     }
     
@@ -254,6 +268,19 @@ public class ExcService {
     }
     
     /**
+    Add rules here when to apply a fee when doing a conversion
+     */
+    private func shoulApplyFeeForConversion() -> Bool {
+        
+        // First 5 conversions are free otherwise it comes for a fee
+        if let wallet = currentWallet() {
+            return wallet.walletTotalConversions > 5
+        }
+        
+        return false
+    }
+    
+    /**
     Create a new balance or update an existing balance in the wallet
      
      - Parameters:
@@ -265,19 +292,22 @@ public class ExcService {
         do {
             
             let realm = try Realm()
-            let currentWallet = realm.objects(Wallet.self).first
+            guard let currentWallet = realm.objects(Wallet.self).first else { return }
             
             var balance: Balance!
             var isNew = false
             
             // get or create a new balance
-            if let existingBalance = currentWallet?.walletBalances.filter("balanceCurrency == '\(symbol)'").first {
+            if let existingBalance = currentWallet.walletBalances.filter("balanceCurrency == '\(symbol)'").first {
                 balance = existingBalance; isNew = false
             } else {
                 balance = Balance(); isNew = true
             }
 
             try realm.write {
+                
+                // track number of conversions
+                currentWallet.walletTotalConversions = currentWallet.walletTotalConversions + 1
                 
                 // update balance amount or set
                 if isNew == false {
@@ -291,7 +321,7 @@ public class ExcService {
                     balance.balanceCurrency = symbol
                     
                     // update current wallet
-                    currentWallet?.walletBalances.append(balance)
+                    currentWallet.walletBalances.append(balance)
                 }
                 
                 // store balance
@@ -303,29 +333,41 @@ public class ExcService {
         }
     }
     
-    func commitConversion(amount: Double, completion: (Double?, String?) -> Void) {
+    /**
+    Commit the conversion
+     
+     - Parameters:
+        - amount: Amount to convert
+        - commissionRate: commission fee in percentage (e.g. 0.7%)
+        - completion:completion block
+     */
+    func commitConversion(amount: Double, commissionRate: Double = 0.7, completion: (Double?, Double?, String?) -> Void) {
         
-        guard let currentRate = selectedCurrency()?.currencyRate, let currentSymbol = selectedCurrency()?.currencySymbol else {
-            completion(nil, "No selected currency")
+        guard let currentRate = selectedCurrency()?.currencyRate, let currentSymbol = selectedCurrency()?.currencySymbol, let wallet = currentWallet() else {
+            completion(nil, nil, "No selected currency")
             return
         }
         
-        // 1. Compute values
-        let convertedValue = convert(sellAmount: amount, rate: currentRate)
+        let commissionFee = computeCommissionFee(sellAmount: amount, commissionRate: commissionRate)
         
-        // 1.1 Check if wallet has the sufficient value before conversion
-        guard walletCurrentBalance() > amount else {
-            completion(nil, "Insufficient Balance")
+        // 1 Check if wallet has the sufficient value before conversion
+        guard wallet.walletBalanceAmount > amount else {
+            completion(nil, nil, "Insufficient Balance")
             return
         }
-
-        // 2. Deduct value to current wallet
+        
+        // 2. Conversion
+        let convertedValue = shoulApplyFeeForConversion()
+            ? convertWithComission(sellAmount: amount, rate: currentRate, commissionRate: commissionFee)
+            : convert(sellAmount: amount, rate: currentRate)
+        
+        // 3. Deduct value to current wallet
         deductAmountToCurrentWallet(amount: amount)
 
-        // 3. Create a balance to new/existing wallet
+        // 4. Create a balance to new/existing wallet
         createUpdateBalance(amount: convertedValue, symbol: currentSymbol)
         
-        // 4. Display results
-        completion(convertedValue, nil)
+        // 5. Display results, return the commission only if needed
+        completion(convertedValue, shoulApplyFeeForConversion() ? commissionFee : nil, nil)
     }
 }

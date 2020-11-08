@@ -82,6 +82,7 @@ public class Wallet: Object {
     @objc dynamic public var walletId: Int = 0
     @objc dynamic public var walletBalanceCurrency: String = ""
     @objc dynamic public var walletBalanceAmount: Double = 0.0
+    @objc dynamic public var walletTotalConversions: Int = 0
     
     let walletBalances = List<Balance>()
     
