@@ -326,6 +326,6 @@ public class ExcService {
         createUpdateBalance(amount: convertedValue, symbol: currentSymbol)
         
         // 4. Display results
-        completion(convertedValue, "")
+        completion(convertedValue, nil)
     }
 }
