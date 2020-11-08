@@ -11,24 +11,35 @@ import XCTest
 
 class CurrencyConvertTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testConversion() {
+        
+        // given
+        let vm = ExcViewModel()
+        let sellAmount = 100.0 // eur
+        let rate = 1.18746 // eur to usd
+        let convertedAmount = 118.746 // to receive in usd
+        
+        // when
+        let sut = vm.convert(sellAmount: sellAmount, rate: rate)
+        
+        // then
+        XCTAssertEqual(sut, convertedAmount)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testConversionWithEndingBalance() {
+        
+        // given
+        let vm = ExcViewModel()
+        let initialBalance = 1000.0
+        let sellAmount = 100.0 // eur
+        let rate = 1.18746 // eur to usd
+        let commissionRate = 0.7 // 0.7% Rate
+        let endingBalance = 880.554 // ending balance in eur wallet
+        
+        // when
+        let sut = vm.convertWithEndingBalance(sellAmount: sellAmount, rate: rate, commissionRate: commissionRate, balance: initialBalance)
+        
+        // then
+        XCTAssertEqual(sut, endingBalance)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
