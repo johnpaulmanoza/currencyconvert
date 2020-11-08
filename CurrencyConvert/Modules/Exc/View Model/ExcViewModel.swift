@@ -7,8 +7,24 @@
 //
 
 import Foundation
+import RxSwift
 
 public class ExcViewModel {
+    
+    private let excService = ExcService()
+    private let bag = DisposeBag()
+    
+    init() {
+        
+        // load latest exchange rates
+        _ = excService.loadLatestExchangeRates()
+            .subscribe(onNext: { [weak this = self] (item) in
+                guard let this = this else { return }
+                print("data", item)
+            })
+            .disposed(by: bag)
+    }
+    
     
     /**
      

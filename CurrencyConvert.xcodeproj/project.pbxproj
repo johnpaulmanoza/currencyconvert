@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		5177144725563F8C00B62BAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177144625563F8C00B62BAE /* AppDelegate.swift */; };
 		5177144925563F8C00B62BAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177144825563F8C00B62BAE /* SceneDelegate.swift */; };
-		5177144B25563F8C00B62BAE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177144A25563F8C00B62BAE /* FirstViewController.swift */; };
-		5177144D25563F8C00B62BAE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177144C25563F8C00B62BAE /* SecondViewController.swift */; };
 		5177145025563F8C00B62BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5177144E25563F8C00B62BAE /* Main.storyboard */; };
 		5177145225563F8D00B62BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5177145125563F8D00B62BAE /* Assets.xcassets */; };
 		5177145525563F8D00B62BAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5177145325563F8D00B62BAE /* LaunchScreen.storyboard */; };
@@ -21,6 +19,9 @@
 		51D9A6DB25577F3F007D5A32 /* ExcRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9A6DA25577F3F007D5A32 /* ExcRouter.swift */; };
 		51D9A6DD25577F5B007D5A32 /* ExcRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9A6DC25577F5B007D5A32 /* ExcRate.swift */; };
 		51D9A6E2255781B2007D5A32 /* ExcViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9A6E1255781B2007D5A32 /* ExcViewModel.swift */; };
+		51D9A6E425579815007D5A32 /* ExcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9A6E325579815007D5A32 /* ExcViewController.swift */; };
+		51D9A6E625579C42007D5A32 /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9A6E525579C42007D5A32 /* WalletViewModel.swift */; };
+		51D9A6E825579C55007D5A32 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9A6E725579C55007D5A32 /* WalletViewController.swift */; };
 		A65E7890A50F6AC17A11D44D /* Pods_CurrencyConvertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A515E7BCD1C433CA69722D9 /* Pods_CurrencyConvertTests.framework */; };
 		C080DD72597AAB053E053256 /* Pods_CurrencyConvert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53426CA02055092232A7BA5 /* Pods_CurrencyConvert.framework */; };
 /* End PBXBuildFile section */
@@ -40,8 +41,6 @@
 		5177144325563F8C00B62BAE /* CurrencyConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5177144625563F8C00B62BAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5177144825563F8C00B62BAE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5177144A25563F8C00B62BAE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		5177144C25563F8C00B62BAE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		5177144F25563F8C00B62BAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5177145125563F8D00B62BAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5177145425563F8D00B62BAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,6 +54,9 @@
 		51D9A6DA25577F3F007D5A32 /* ExcRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcRouter.swift; sourceTree = "<group>"; };
 		51D9A6DC25577F5B007D5A32 /* ExcRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcRate.swift; sourceTree = "<group>"; };
 		51D9A6E1255781B2007D5A32 /* ExcViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcViewModel.swift; sourceTree = "<group>"; };
+		51D9A6E325579815007D5A32 /* ExcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcViewController.swift; sourceTree = "<group>"; };
+		51D9A6E525579C42007D5A32 /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
+		51D9A6E725579C55007D5A32 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		5EBE86158CA2BEED7E4003E7 /* Pods-CurrencyConvert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConvert.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyConvert/Pods-CurrencyConvert.debug.xcconfig"; sourceTree = "<group>"; };
 		A1BA0BF887F16D55DABA85F2 /* Pods-CurrencyConvertTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConvertTests.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyConvertTests/Pods-CurrencyConvertTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE0D4C07C85BAADA29B2AF1F /* Pods-CurrencyConvertTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConvertTests.release.xcconfig"; path = "Target Support Files/Pods-CurrencyConvertTests/Pods-CurrencyConvertTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				51D9A6E1255781B2007D5A32 /* ExcViewModel.swift */,
+				51D9A6E525579C42007D5A32 /* WalletViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -205,8 +208,8 @@
 		51D9A6E02557818B007D5A32 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5177144A25563F8C00B62BAE /* FirstViewController.swift */,
-				5177144C25563F8C00B62BAE /* SecondViewController.swift */,
+				51D9A6E325579815007D5A32 /* ExcViewController.swift */,
+				51D9A6E725579C55007D5A32 /* WalletViewController.swift */,
 				5177144E25563F8C00B62BAE /* Main.storyboard */,
 			);
 			path = View;
@@ -419,13 +422,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				51D9A6CD2557778D007D5A32 /* APIManager.swift in Sources */,
-				5177144D25563F8C00B62BAE /* SecondViewController.swift in Sources */,
-				5177144B25563F8C00B62BAE /* FirstViewController.swift in Sources */,
 				51D9A6DB25577F3F007D5A32 /* ExcRouter.swift in Sources */,
 				51D9A6CB25577785007D5A32 /* RealmManager.swift in Sources */,
+				51D9A6E425579815007D5A32 /* ExcViewController.swift in Sources */,
+				51D9A6E825579C55007D5A32 /* WalletViewController.swift in Sources */,
 				5177144725563F8C00B62BAE /* AppDelegate.swift in Sources */,
 				5177144925563F8C00B62BAE /* SceneDelegate.swift in Sources */,
 				51D9A6DD25577F5B007D5A32 /* ExcRate.swift in Sources */,
+				51D9A6E625579C42007D5A32 /* WalletViewModel.swift in Sources */,
 				51D9A6D925577F24007D5A32 /* ExcService.swift in Sources */,
 				51D9A6E2255781B2007D5A32 /* ExcViewModel.swift in Sources */,
 			);
