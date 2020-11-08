@@ -57,4 +57,20 @@ public class CurrencyViewModel {
             CurrencyListItem.listSection(header: "", items: listItems)
         ])
     }
+    
+    /**
+     
+    Store the selected currency for conversion
+     
+    - Parameters:
+     - symbol: Selected currency symbol
+     - rate: Selected currency rate
+     
+     */
+    func storeSelectedCurrency(symbol: String, rate: Double) {
+        
+        let data: [String: Any] = ["symbol": symbol, "rate": rate]
+        UserDefaults.standard.set(data, forKey: "selected_currency")
+        UserDefaults.standard.synchronize()
+    }
 }
