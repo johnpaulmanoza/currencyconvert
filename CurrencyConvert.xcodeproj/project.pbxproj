@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,9 @@
 		5177146025563F8D00B62BAE /* CurrencyConvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177145F25563F8D00B62BAE /* CurrencyConvertTests.swift */; };
 		51D9A6CB25577785007D5A32 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9A6CA25577785007D5A32 /* RealmManager.swift */; };
 		51D9A6CD2557778D007D5A32 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9A6CC2557778D007D5A32 /* APIManager.swift */; };
+		51D9A6D925577F24007D5A32 /* ExcService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9A6D825577F24007D5A32 /* ExcService.swift */; };
+		51D9A6DB25577F3F007D5A32 /* ExcRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9A6DA25577F3F007D5A32 /* ExcRouter.swift */; };
+		51D9A6DD25577F5B007D5A32 /* ExcRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D9A6DC25577F5B007D5A32 /* ExcRate.swift */; };
 		A65E7890A50F6AC17A11D44D /* Pods_CurrencyConvertTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A515E7BCD1C433CA69722D9 /* Pods_CurrencyConvertTests.framework */; };
 		C080DD72597AAB053E053256 /* Pods_CurrencyConvert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53426CA02055092232A7BA5 /* Pods_CurrencyConvert.framework */; };
 /* End PBXBuildFile section */
@@ -47,6 +50,9 @@
 		5177146125563F8D00B62BAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51D9A6CA25577785007D5A32 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		51D9A6CC2557778D007D5A32 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		51D9A6D825577F24007D5A32 /* ExcService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcService.swift; sourceTree = "<group>"; };
+		51D9A6DA25577F3F007D5A32 /* ExcRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcRouter.swift; sourceTree = "<group>"; };
+		51D9A6DC25577F5B007D5A32 /* ExcRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcRate.swift; sourceTree = "<group>"; };
 		5EBE86158CA2BEED7E4003E7 /* Pods-CurrencyConvert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConvert.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyConvert/Pods-CurrencyConvert.debug.xcconfig"; sourceTree = "<group>"; };
 		A1BA0BF887F16D55DABA85F2 /* Pods-CurrencyConvertTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConvertTests.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyConvertTests/Pods-CurrencyConvertTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE0D4C07C85BAADA29B2AF1F /* Pods-CurrencyConvertTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConvertTests.release.xcconfig"; path = "Target Support Files/Pods-CurrencyConvertTests/Pods-CurrencyConvertTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +123,9 @@
 			isa = PBXGroup;
 			children = (
 				51D9A6C92557775B007D5A32 /* Manager */,
+				51D9A6D125577B78007D5A32 /* Model */,
+				51D9A6D425577ECB007D5A32 /* Routers */,
+				51D9A6D725577EFA007D5A32 /* Services */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -158,6 +167,30 @@
 				5177144E25563F8C00B62BAE /* Main.storyboard */,
 			);
 			path = Exchange;
+			sourceTree = "<group>";
+		};
+		51D9A6D125577B78007D5A32 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				51D9A6DC25577F5B007D5A32 /* ExcRate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		51D9A6D425577ECB007D5A32 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				51D9A6DA25577F3F007D5A32 /* ExcRouter.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		51D9A6D725577EFA007D5A32 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				51D9A6D825577F24007D5A32 /* ExcService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		6DDC59384B69C0F8DF25A82A /* Pods */ = {
@@ -369,9 +402,12 @@
 				51D9A6CD2557778D007D5A32 /* APIManager.swift in Sources */,
 				5177144D25563F8C00B62BAE /* SecondViewController.swift in Sources */,
 				5177144B25563F8C00B62BAE /* FirstViewController.swift in Sources */,
+				51D9A6DB25577F3F007D5A32 /* ExcRouter.swift in Sources */,
 				51D9A6CB25577785007D5A32 /* RealmManager.swift in Sources */,
 				5177144725563F8C00B62BAE /* AppDelegate.swift in Sources */,
 				5177144925563F8C00B62BAE /* SceneDelegate.swift in Sources */,
+				51D9A6DD25577F5B007D5A32 /* ExcRate.swift in Sources */,
+				51D9A6D925577F24007D5A32 /* ExcService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
