@@ -24,6 +24,7 @@ public class ExcViewModel {
     private let excService = ExcService()
     private let bag = DisposeBag()
     private var hasLatestExchangeRates = false
+    private var selectedCurrencySymbol: String?
     
     init() {
         
@@ -36,18 +37,24 @@ public class ExcViewModel {
             
             // observe changes to selected currency
             guard let currency = this?.excService.selectedCurrency() else { return }
+            this?.selectedCurrencySymbol = currency.currencySymbol
+                
             Observable.from(object: currency)
             .subscribe(onNext: { nextItems in
                 // delay again to reflect the selection
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    this?.showItems()
+                    let updatedCurrency = this?.excService.selectedCurrency()?.currencySymbol
+                    // check for changes first
+                    if this?.selectedCurrencySymbol != updatedCurrency {
+                        this?.showItems(); this?.selectedCurrencySymbol = updatedCurrency
+                    }
                 }
             })
             .disposed(by: this!.bag)
         }
         
-        // refresh exchange rates every 5 mins
-        _ = Timer.scheduledTimer(timeInterval: 300.0, target: self, selector: #selector(ExcViewModel.loadLatestExchangeRates), userInfo: nil, repeats: true)
+        // refresh exchange rates every 5 seconds
+        _ = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(ExcViewModel.loadLatestExchangeRates), userInfo: nil, repeats: true)
     }
     
     /**
