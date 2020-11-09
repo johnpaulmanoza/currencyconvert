@@ -341,10 +341,11 @@ public class ExcService {
         - commissionRate: commission fee in percentage (e.g. 0.7%)
         - completion:completion block
      */
-    func commitConversion(amount: Double, commissionRate: Double = 0.7, completion: (Double?, Double?, String?) -> Void) {
+    typealias conversionHandler = (_ amountDesc: String?, _ convertedDesc: String?, _ commissionDesc: String?, _ error: String?) -> Void
+    func commitConversion(amount: Double, commissionRate: Double = 0.7, completion: conversionHandler) {
         
-        guard let currentRate = selectedCurrency()?.currencyRate, let currentSymbol = selectedCurrency()?.currencySymbol, let wallet = currentWallet() else {
-            completion(nil, nil, "No selected currency")
+        guard let currentRate = selectedCurrency()?.currencyRate, let currentSymbol = selectedCurrency()?.currencySymbol, let wallet = currentWallet(), let walletSymbol = currentWallet()?.walletBalanceCurrency else {
+            completion(nil, nil, nil, "No selected currency")
             return
         }
         
@@ -352,7 +353,7 @@ public class ExcService {
         
         // 1 Check if wallet has the sufficient value before conversion
         guard wallet.walletBalanceAmount > amount else {
-            completion(nil, nil, "Insufficient Balance")
+            completion(nil, nil, nil, "Insufficient Balance")
             return
         }
         
@@ -368,6 +369,17 @@ public class ExcService {
         createUpdateBalance(amount: convertedValue, symbol: currentSymbol)
         
         // 5. Display results, return the commission only if needed
-        completion(convertedValue, shoulApplyFeeForConversion() ? commissionFee : nil, nil)
+        
+        // format the values first
+        let formatter = NumberFormatter(); formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2; formatter.maximumFractionDigits = 2
+        let amountFormatted = formatter.string(from: (amount) as NSNumber) ?? ""
+        let convertedFormatted = formatter.string(from: (convertedValue) as NSNumber) ?? ""
+        let commissionFormatted = formatter.string(from: (commissionFee) as NSNumber) ?? ""
+        
+        let amounthDesc = "\(amountFormatted) \(walletSymbol)" // e.g. 100 EUR has been converted to
+        let convertedDesc = "\(convertedFormatted) \(currentSymbol)" // 128 USD
+        let commissionDesc = shoulApplyFeeForConversion() ? "\(commissionFormatted) \(walletSymbol)" : nil // with commission of
+        completion(amounthDesc, convertedDesc, commissionDesc, nil)
     }
 }

@@ -17,7 +17,11 @@ class Vocabulary {
     // Translations happens in this fnx NSLocalizedString()
     
     static let ErrorNetworkRequest = NSLocalizedString("Error Network Request")
+    static let ErrorConversion = NSLocalizedString("Failed conversion")
+    static let SuccessConversion = NSLocalizedString("Currency converted")
     static let Retry = NSLocalizedString("Retry")
-    static let From = NSLocalizedString("From")
-    static let To = NSLocalizedString("To")
+    static let OK = NSLocalizedString("OK")
+    static let YouHaveConverted = NSLocalizedString("You have converted")
+    static let CommissionFee = NSLocalizedString("Commission Fee - ")
+    static let to = NSLocalizedString("to")
 }

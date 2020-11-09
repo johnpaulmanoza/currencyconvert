@@ -12,12 +12,31 @@ import RxSwift
 class ConversionCell: UITableViewCell {
 
     @IBOutlet weak var conversionView: UIView!
+    @IBOutlet weak var totalBalanceLabel: UILabel!
     @IBOutlet weak var fromField: UITextField!
     @IBOutlet weak var toField: UITextField!
     @IBOutlet weak var fromCurrencyButton: UIButton!
     @IBOutlet weak var toCurrencyButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var walletButton: UIButton!
+    
+    
+    var data: ExcCellItem? {
+        didSet {
+            guard let data = data else { return }
+            
+            // display balance
+            totalBalanceLabel.text = data.currentBalance
+            
+            // display inputs
+            fromField.text = data.fromValue ?? ""
+            toField.text = data.toValue ?? ""
+            
+            // set button titles
+            fromCurrencyButton.setTitle(data.fromCurrencySymbol ?? "", for: .normal)
+            toCurrencyButton.setTitle(data.toCurrencySymbol ?? "", for: .normal)
+        }
+    }
     
     private(set) var bag = DisposeBag()
     

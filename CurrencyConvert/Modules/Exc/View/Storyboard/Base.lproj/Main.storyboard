@@ -132,7 +132,7 @@
                                                                 <color key="titleColor" red="0.23921568630000001" green="0.40000000000000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                         </button>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Vfe-QG-Ycn">
+                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Vfe-QG-Ycn">
                                                             <rect key="frame" x="18" y="121" width="231" height="50"/>
                                                             <color key="backgroundColor" red="0.94509803920000002" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
@@ -195,6 +195,7 @@
                                             <outlet property="submitButton" destination="fp9-WS-BsJ" id="yGe-ho-rhj"/>
                                             <outlet property="toCurrencyButton" destination="IKL-gz-MJF" id="zkh-2h-K7c"/>
                                             <outlet property="toField" destination="Vfe-QG-Ycn" id="qsX-dw-dX3"/>
+                                            <outlet property="totalBalanceLabel" destination="inG-ep-Zgt" id="hVj-2k-NOv"/>
                                             <outlet property="walletButton" destination="0VV-6I-PmI" id="Uq4-S7-pJg"/>
                                         </connections>
                                     </tableViewCell>
