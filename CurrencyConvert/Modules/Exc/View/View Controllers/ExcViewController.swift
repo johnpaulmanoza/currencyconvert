@@ -107,6 +107,12 @@ class ExcViewController: UIViewController {
         let nav = board.instantiateViewController(withIdentifier: CurrencyViewController.navId)
         present(nav, animated: true, completion: nil)
     }
+
+    private func navigateToWalletList() {
+        let board = UIStoryboard(name: "Main", bundle: nil)
+        let nav = board.instantiateViewController(withIdentifier: WalletViewController.navId)
+        present(nav, animated: true, completion: nil)
+    }
 }
 
 extension ExcViewController {
@@ -134,6 +140,12 @@ extension ExcViewController {
             _ = cell.toCurrencyButton.rx.tap.asObservable()
                 .subscribe(onNext: { [weak this = self] (_) in
                     this?.navigateToCurrencyList()
+                })
+                .disposed(by: cell.bag)
+            
+            _ = cell.walletButton.rx.tap.asObservable()
+                .subscribe(onNext: { [weak this = self] (_) in
+                    this?.navigateToWalletList()
                 })
                 .disposed(by: cell.bag)
             

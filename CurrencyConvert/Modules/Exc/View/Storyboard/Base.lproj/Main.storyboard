@@ -327,5 +327,89 @@
             </objects>
             <point key="canvasLocation" x="-1263.2" y="533.49753694581284"/>
         </scene>
+        <!--Wallets-->
+        <scene sceneID="lhl-PI-5Gx">
+            <objects>
+                <viewController storyboardIdentifier="WalletViewController" id="jlI-MA-Bee" customClass="WalletViewController" customModule="CurrencyConvert" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Fx-ZD-gqh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="myZ-FW-aOZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WalletCell" textLabel="2Mh-EN-9EP" detailTextLabel="R1P-25-UKx" style="IBUITableViewCellStyleValue1" id="8ai-gD-8U8" customClass="WalletCell" customModule="CurrencyConvert" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8ai-gD-8U8" id="Amd-AK-5ix">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Mh-EN-9EP">
+                                                    <rect key="frame" x="15" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R1P-25-UKx">
+                                                    <rect key="frame" x="316" y="11.999999999999998" width="44" height="20.333333333333332"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="myZ-FW-aOZ" firstAttribute="leading" secondItem="8y2-3E-5is" secondAttribute="leading" id="5pa-op-xYv"/>
+                            <constraint firstItem="myZ-FW-aOZ" firstAttribute="top" secondItem="8y2-3E-5is" secondAttribute="top" id="OWS-Qw-Js4"/>
+                            <constraint firstItem="myZ-FW-aOZ" firstAttribute="trailing" secondItem="8y2-3E-5is" secondAttribute="trailing" id="PQd-nb-zug"/>
+                            <constraint firstItem="myZ-FW-aOZ" firstAttribute="bottom" secondItem="8y2-3E-5is" secondAttribute="bottom" id="g2V-Yg-GRc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8y2-3E-5is"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Wallets" id="muU-AE-T9L">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="2jG-Ss-Hys">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="myZ-FW-aOZ" id="V0u-AK-Sfl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U2f-of-a4J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1534" y="1278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VT8-Yi-uuq">
+            <objects>
+                <navigationController storyboardIdentifier="WalletViewControllerNav" automaticallyAdjustsScrollViewInsets="NO" id="M5X-mk-V2S" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="bIL-iw-PKr">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.14117647059999999" green="0.22352941179999999" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jlI-MA-Bee" kind="relationship" relationship="rootViewController" id="9ce-6W-17S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qEK-54-E8s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="591" y="1278"/>
+        </scene>
     </scenes>
 </document>
