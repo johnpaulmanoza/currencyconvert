@@ -31,7 +31,7 @@ public class ExcViewModel {
         loadLatestExchangeRates()
         
         // run on main thread and make sure to add delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak this = self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { [weak this = self] in
             // first load
             this?.showItems()
             

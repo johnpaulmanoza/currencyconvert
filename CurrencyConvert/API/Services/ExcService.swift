@@ -274,7 +274,7 @@ public class ExcService {
         
         // First 5 conversions are free otherwise it comes for a fee
         if let wallet = currentWallet() {
-            return wallet.walletTotalConversions > 5
+            return wallet.walletTotalConversions > 4
         }
         
         return false
@@ -358,12 +358,15 @@ public class ExcService {
         }
         
         // 2. Conversion
-        let convertedValue = shoulApplyFeeForConversion()
-            ? convertWithComission(sellAmount: amount, rate: currentRate, commissionRate: commissionFee)
-            : convert(sellAmount: amount, rate: currentRate)
+        let shoulApplyFee = shoulApplyFeeForConversion()
+        let convertedValue = convert(sellAmount: amount, rate: currentRate)
         
         // 3. Deduct value to current wallet
-        deductAmountToCurrentWallet(amount: amount)
+        let deductedValue = shoulApplyFee
+            ? convertWithComission(sellAmount: amount, rate: currentRate, commissionRate: commissionFee)
+            : convertedValue
+        
+        deductAmountToCurrentWallet(amount: deductedValue)
 
         // 4. Create a balance to new/existing wallet
         createUpdateBalance(amount: convertedValue, symbol: currentSymbol)
@@ -379,7 +382,7 @@ public class ExcService {
         
         let amounthDesc = "\(amountFormatted) \(walletSymbol)" // e.g. 100 EUR has been converted to
         let convertedDesc = "\(convertedFormatted) \(currentSymbol)" // 128 USD
-        let commissionDesc = shoulApplyFeeForConversion() ? "\(commissionFormatted) \(walletSymbol)" : nil // with commission of
+        let commissionDesc = shoulApplyFee ? "\(commissionFormatted) \(walletSymbol)" : nil // with commission of
         completion(amounthDesc, convertedDesc, commissionDesc, nil)
     }
 }
