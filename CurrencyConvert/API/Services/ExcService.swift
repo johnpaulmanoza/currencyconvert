@@ -366,7 +366,7 @@ public class ExcService {
             ? convertWithComission(sellAmount: amount, rate: currentRate, commissionRate: commissionFee)
             : convertedValue
         
-        deductAmountToCurrentWallet(amount: deductedValue)
+        deductAmountToCurrentWallet(amount: amount)
 
         // 4. Create a balance to new/existing wallet
         createUpdateBalance(amount: convertedValue, symbol: currentSymbol)
