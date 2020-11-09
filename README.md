@@ -10,3 +10,9 @@
 ## How to run the app?
 
 * Just run `pod install` and open the `xcworkspace` file.
+
+## Preview
+
+![Shot 1](https://github.com/johnpaulmanoza/currencyconvert/blob/master/Preview/Shot1.png?raw=true)
+![Shot 2](https://github.com/johnpaulmanoza/currencyconvert/blob/master/Preview/Shot2.png?raw=true)
+![Shot 3](https://github.com/johnpaulmanoza/currencyconvert/blob/master/Preview/Shot3.png?raw=true)
