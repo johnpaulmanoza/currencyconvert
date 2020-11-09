@@ -66,6 +66,7 @@ class CurrencyViewController: UIViewController {
                     guard let currency = data.currency else { return }
                     // store the selected
                     this?.viewModel.storeSelectedCurrency(currencySymbol: currency.currencySymbol)
+                    this?.dismiss(animated: true, completion: nil)
                 }
             })
             .disposed(by: bag)

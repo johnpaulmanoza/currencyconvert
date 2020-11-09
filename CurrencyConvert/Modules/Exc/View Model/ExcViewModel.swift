@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RealmSwift
+import RxRealm
 
 public class ExcViewModel {
     
@@ -29,15 +30,24 @@ public class ExcViewModel {
         
         // run on main thread and make sure to add delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak this = self] in
-           this?.showItems()
+            // first load
+            this?.showItems()
+            
+            // observe changes to selected currency
+            guard let currency = this?.excService.selectedCurrency() else { return }
+            Observable.from(object: currency)
+            .subscribe(onNext: { nextItems in
+                // delay again to reflect the selection
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    this?.showItems()
+                }
+            })
+            .disposed(by: this!.bag)
         }
     }
     
-    
     /**
-        
     Load latest exchange rates and populate local db
-     
     */
     func loadLatestExchangeRates() {
         
@@ -83,15 +93,15 @@ public class ExcViewModel {
     }
     
     /**
-     
     Display list items by iterating the currency results and converting them to UI Model Classes
-     
      */
     func showItems(fromAmount: String? = nil, toAmount: String? = nil) {
         
         // formatter for displayed values
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
         
         // extract values from selection
         let wallet = excService.currentWallet()
