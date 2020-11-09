@@ -12,6 +12,8 @@ import JGProgressHUD
 
 class ExcViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     private let viewModel = ExcViewModel()
     private let loading = JGProgressHUD(style: .dark)
     private let bag = DisposeBag()
@@ -33,6 +35,7 @@ class ExcViewController: UIViewController {
     
     private func bind() {
         
+        tableView.dataSource = self
     }
     
     private func observe() {
@@ -64,5 +67,44 @@ class ExcViewController: UIViewController {
     @IBAction func tapSubmitButton(_ sender: Any) {
         
         viewModel.commitConversion(amount: 120)
+    }
+    
+    private func navigateToCurrencyList() {
+        let board = UIStoryboard(name: "Main", bundle: nil)
+        let nav = board.instantiateViewController(withIdentifier: CurrencyViewController.navId)
+        present(nav, animated: true, completion: nil)
+    }
+}
+
+extension ExcViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ConversionCell.id, for: indexPath) as? ConversionCell else {
+            return UITableViewCell()
+        }
+        
+        observeCell(cell)
+        
+        return cell
+    }
+    
+    public func observeCell(_ type: AnyObject) {
+
+        if let cell = type as? ConversionCell {
+
+            _ = cell.toCurrencyButton.rx.tap.asObservable()
+                .subscribe(onNext: { [weak this = self] (_) in
+                    this?.navigateToCurrencyList()
+                })
+                .disposed(by: cell.bag)
+        }
     }
 }

@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5118A8A72558C535002A69E5 /* IBMPlexSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A8992558C535002A69E5 /* IBMPlexSans-LightItalic.ttf */; };
+		5118A8A82558C535002A69E5 /* IBMPlexSans-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A89A2558C535002A69E5 /* IBMPlexSans-ExtraLightItalic.ttf */; };
+		5118A8A92558C535002A69E5 /* IBMPlexSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A89B2558C535002A69E5 /* IBMPlexSans-Thin.ttf */; };
+		5118A8AA2558C535002A69E5 /* IBMPlexSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A89C2558C535002A69E5 /* IBMPlexSans-Italic.ttf */; };
+		5118A8AB2558C535002A69E5 /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A89D2558C535002A69E5 /* IBMPlexSans-Regular.ttf */; };
+		5118A8AC2558C535002A69E5 /* IBMPlexSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A89E2558C535002A69E5 /* IBMPlexSans-ExtraLight.ttf */; };
+		5118A8AD2558C535002A69E5 /* IBMPlexSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A89F2558C535002A69E5 /* IBMPlexSans-Light.ttf */; };
+		5118A8AE2558C535002A69E5 /* IBMPlexSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A8A02558C535002A69E5 /* IBMPlexSans-MediumItalic.ttf */; };
+		5118A8AF2558C535002A69E5 /* IBMPlexSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A8A12558C535002A69E5 /* IBMPlexSans-BoldItalic.ttf */; };
+		5118A8B02558C535002A69E5 /* IBMPlexSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A8A22558C535002A69E5 /* IBMPlexSans-SemiBold.ttf */; };
+		5118A8B12558C535002A69E5 /* IBMPlexSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A8A32558C535002A69E5 /* IBMPlexSans-SemiBoldItalic.ttf */; };
+		5118A8B22558C535002A69E5 /* IBMPlexSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A8A42558C535002A69E5 /* IBMPlexSans-Bold.ttf */; };
+		5118A8B32558C535002A69E5 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A8A52558C535002A69E5 /* IBMPlexSans-Medium.ttf */; };
+		5118A8B42558C535002A69E5 /* IBMPlexSans-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5118A8A62558C535002A69E5 /* IBMPlexSans-ThinItalic.ttf */; };
+		5118A8B62558D340002A69E5 /* ConversionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5118A8B52558D340002A69E5 /* ConversionCell.swift */; };
 		5177144725563F8C00B62BAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177144625563F8C00B62BAE /* AppDelegate.swift */; };
 		5177144925563F8C00B62BAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5177144825563F8C00B62BAE /* SceneDelegate.swift */; };
 		5177145025563F8C00B62BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5177144E25563F8C00B62BAE /* Main.storyboard */; };
@@ -46,6 +61,21 @@
 
 /* Begin PBXFileReference section */
 		2A515E7BCD1C433CA69722D9 /* Pods_CurrencyConvertTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CurrencyConvertTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5118A8992558C535002A69E5 /* IBMPlexSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		5118A89A2558C535002A69E5 /* IBMPlexSans-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		5118A89B2558C535002A69E5 /* IBMPlexSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Thin.ttf"; sourceTree = "<group>"; };
+		5118A89C2558C535002A69E5 /* IBMPlexSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Italic.ttf"; sourceTree = "<group>"; };
+		5118A89D2558C535002A69E5 /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
+		5118A89E2558C535002A69E5 /* IBMPlexSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		5118A89F2558C535002A69E5 /* IBMPlexSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Light.ttf"; sourceTree = "<group>"; };
+		5118A8A02558C535002A69E5 /* IBMPlexSans-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-MediumItalic.ttf"; sourceTree = "<group>"; };
+		5118A8A12558C535002A69E5 /* IBMPlexSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		5118A8A22558C535002A69E5 /* IBMPlexSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		5118A8A32558C535002A69E5 /* IBMPlexSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		5118A8A42558C535002A69E5 /* IBMPlexSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Bold.ttf"; sourceTree = "<group>"; };
+		5118A8A52558C535002A69E5 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
+		5118A8A62558C535002A69E5 /* IBMPlexSans-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-ThinItalic.ttf"; sourceTree = "<group>"; };
+		5118A8B52558D340002A69E5 /* ConversionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionCell.swift; sourceTree = "<group>"; };
 		5177144325563F8C00B62BAE /* CurrencyConvert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyConvert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5177144625563F8C00B62BAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5177144825563F8C00B62BAE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +130,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5118A8982558C51C002A69E5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5118A8A42558C535002A69E5 /* IBMPlexSans-Bold.ttf */,
+				5118A8A12558C535002A69E5 /* IBMPlexSans-BoldItalic.ttf */,
+				5118A89E2558C535002A69E5 /* IBMPlexSans-ExtraLight.ttf */,
+				5118A89A2558C535002A69E5 /* IBMPlexSans-ExtraLightItalic.ttf */,
+				5118A89C2558C535002A69E5 /* IBMPlexSans-Italic.ttf */,
+				5118A89F2558C535002A69E5 /* IBMPlexSans-Light.ttf */,
+				5118A8992558C535002A69E5 /* IBMPlexSans-LightItalic.ttf */,
+				5118A8A52558C535002A69E5 /* IBMPlexSans-Medium.ttf */,
+				5118A8A02558C535002A69E5 /* IBMPlexSans-MediumItalic.ttf */,
+				5118A89D2558C535002A69E5 /* IBMPlexSans-Regular.ttf */,
+				5118A8A22558C535002A69E5 /* IBMPlexSans-SemiBold.ttf */,
+				5118A8A32558C535002A69E5 /* IBMPlexSans-SemiBoldItalic.ttf */,
+				5118A89B2558C535002A69E5 /* IBMPlexSans-Thin.ttf */,
+				5118A8A62558C535002A69E5 /* IBMPlexSans-ThinItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		5177143A25563F8C00B62BAE = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +213,7 @@
 		51D9A6CE255777A2007D5A32 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5118A8982558C51C002A69E5 /* Fonts */,
 				5177145625563F8D00B62BAE /* Info.plist */,
 				5177145325563F8D00B62BAE /* LaunchScreen.storyboard */,
 				5177145125563F8D00B62BAE /* Assets.xcassets */,
@@ -239,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				51D9A6EE2557A873007D5A32 /* CurrencyCell.swift */,
+				5118A8B52558D340002A69E5 /* ConversionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -384,9 +437,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5118A8AF2558C535002A69E5 /* IBMPlexSans-BoldItalic.ttf in Resources */,
+				5118A8AD2558C535002A69E5 /* IBMPlexSans-Light.ttf in Resources */,
+				5118A8AE2558C535002A69E5 /* IBMPlexSans-MediumItalic.ttf in Resources */,
+				5118A8AB2558C535002A69E5 /* IBMPlexSans-Regular.ttf in Resources */,
+				5118A8B12558C535002A69E5 /* IBMPlexSans-SemiBoldItalic.ttf in Resources */,
+				5118A8A72558C535002A69E5 /* IBMPlexSans-LightItalic.ttf in Resources */,
+				5118A8B32558C535002A69E5 /* IBMPlexSans-Medium.ttf in Resources */,
 				5177145525563F8D00B62BAE /* LaunchScreen.storyboard in Resources */,
 				5177145225563F8D00B62BAE /* Assets.xcassets in Resources */,
+				5118A8B42558C535002A69E5 /* IBMPlexSans-ThinItalic.ttf in Resources */,
 				5177145025563F8C00B62BAE /* Main.storyboard in Resources */,
+				5118A8A92558C535002A69E5 /* IBMPlexSans-Thin.ttf in Resources */,
+				5118A8AC2558C535002A69E5 /* IBMPlexSans-ExtraLight.ttf in Resources */,
+				5118A8B22558C535002A69E5 /* IBMPlexSans-Bold.ttf in Resources */,
+				5118A8A82558C535002A69E5 /* IBMPlexSans-ExtraLightItalic.ttf in Resources */,
+				5118A8AA2558C535002A69E5 /* IBMPlexSans-Italic.ttf in Resources */,
+				5118A8B02558C535002A69E5 /* IBMPlexSans-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +561,7 @@
 				51D9A6E425579815007D5A32 /* ExcViewController.swift in Sources */,
 				51D9A6FB2557A9E0007D5A32 /* CurrencyViewModel.swift in Sources */,
 				51D9A6F62557A8E1007D5A32 /* Collection.swift in Sources */,
+				5118A8B62558D340002A69E5 /* ConversionCell.swift in Sources */,
 				51D9A6E825579C55007D5A32 /* WalletViewController.swift in Sources */,
 				5177144725563F8C00B62BAE /* AppDelegate.swift in Sources */,
 				51D9A6F92557A944007D5A32 /* CurrencyListItem.swift in Sources */,

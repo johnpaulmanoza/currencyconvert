@@ -16,6 +16,10 @@ extension UIViewController {
         return String(describing: self)
     }
     
+    public static var navId: String {
+        return String(describing: self) + "Nav"
+    }
+    
     /**
      To easily display a prompt or alert view
     */
@@ -27,5 +31,24 @@ extension UIViewController {
             }))
         }
         self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension UIView {
+    /**
+     Add shadow to a uiview with Material Design specs
+     Ref: https://medium.com/material-design-for-ios/part-1-elevation-e48ff795c693
+    */
+    func elevate(elevation: Double, addBorder: Bool = false, radius: Double = 7.0) {
+        if addBorder {
+            self.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+            self.layer.borderWidth = 0.5
+        }
+        self.layer.cornerRadius = CGFloat(radius)
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1).cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: elevation)
+        self.layer.shadowRadius = abs(CGFloat(elevation))
+        self.layer.shadowOpacity = 0.24
     }
 }
