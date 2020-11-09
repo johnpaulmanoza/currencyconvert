@@ -31,7 +31,7 @@ class WalletViewController: UIViewController {
     
     private func customize() {
         
-        tableView.rowHeight = 60
+        tableView.rowHeight = 166
         tableView.tableFooterView = UIView()
     }
     
