@@ -23,6 +23,7 @@ public class ExcViewModel {
     // MARK: Private
     private let excService = ExcService()
     private let bag = DisposeBag()
+    private var hasLatestExchangeRates = false
     
     init() {
         
@@ -44,21 +45,33 @@ public class ExcViewModel {
             })
             .disposed(by: this!.bag)
         }
+        
+        // refresh exchange rates every 5 mins
+        _ = Timer.scheduledTimer(timeInterval: 300.0, target: self, selector: #selector(ExcViewModel.loadLatestExchangeRates), userInfo: nil, repeats: true)
     }
     
     /**
     Load latest exchange rates and populate local db
     */
+    @objc
     func loadLatestExchangeRates() {
         
-        isLoading.onNext(true)
+        // show loader on first call only
+        if hasLatestExchangeRates == false {
+            isLoading.onNext(true)
+        }
         
         _ = excService.loadLatestExchangeRates()
             .subscribe(onNext: { [weak this = self] (item) in
                 guard let this = this else { return }
                 
+                debugPrint("latest rates updated ...")
+                
                 // hide loader
-                this.isLoading.onNext(false)
+                if this.hasLatestExchangeRates == false { this.isLoading.onNext(false) }
+                
+                // mark completion
+                this.hasLatestExchangeRates = true
                 
             }, onError: { [weak this = self] (e) in
                 
