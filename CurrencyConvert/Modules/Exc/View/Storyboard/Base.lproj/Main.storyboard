@@ -232,29 +232,58 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyCell" textLabel="ip4-Of-w7g" detailTextLabel="4JC-NL-4we" style="IBUITableViewCellStyleValue1" id="03j-WB-Gz1" customClass="CurrencyCell" customModule="CurrencyConvert" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyCell" rowHeight="60" id="03j-WB-Gz1" customClass="CurrencyCell" customModule="CurrencyConvert" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="03j-WB-Gz1" id="a5o-QY-AWe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ip4-Of-w7g">
-                                                    <rect key="frame" x="15" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Wt-IC-PbW">
+                                                    <rect key="frame" x="15" y="14" width="48" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="QeA-KV-5vn"/>
+                                                        <constraint firstAttribute="width" constant="48" id="pAV-vl-JRZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLH-22-mqV">
+                                                    <rect key="frame" x="77" y="14" width="185" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="2B4-oc-Mf9"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4JC-NL-4we">
-                                                    <rect key="frame" x="316" y="11.999999999999998" width="44" height="20.333333333333332"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBy-4a-SrG">
+                                                    <rect key="frame" x="270" y="14" width="90" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="MUu-Yo-vmo"/>
+                                                        <constraint firstAttribute="height" constant="32" id="PIf-zq-c0A"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="WLH-22-mqV" firstAttribute="top" secondItem="a5o-QY-AWe" secondAttribute="topMargin" constant="3" id="2ps-Pd-mgF"/>
+                                                <constraint firstItem="2Wt-IC-PbW" firstAttribute="top" secondItem="a5o-QY-AWe" secondAttribute="topMargin" constant="3" id="94B-Xj-Peq"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="WLH-22-mqV" secondAttribute="bottom" constant="3" id="J12-to-Bv7"/>
+                                                <constraint firstItem="2Wt-IC-PbW" firstAttribute="leading" secondItem="a5o-QY-AWe" secondAttribute="leadingMargin" id="NaW-Uy-ZE9"/>
+                                                <constraint firstItem="UBy-4a-SrG" firstAttribute="leading" secondItem="WLH-22-mqV" secondAttribute="trailing" constant="8" id="S3K-1o-Ja2"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2Wt-IC-PbW" secondAttribute="bottom" constant="3" id="Tsl-3V-R45"/>
+                                                <constraint firstItem="WLH-22-mqV" firstAttribute="leading" secondItem="2Wt-IC-PbW" secondAttribute="trailing" constant="14" id="Wqe-i3-BiJ"/>
+                                                <constraint firstItem="UBy-4a-SrG" firstAttribute="top" secondItem="a5o-QY-AWe" secondAttribute="topMargin" constant="3" id="uAW-5L-jl2"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="UBy-4a-SrG" secondAttribute="bottom" constant="3" id="uDa-V2-pVl"/>
+                                                <constraint firstItem="UBy-4a-SrG" firstAttribute="trailing" secondItem="a5o-QY-AWe" secondAttribute="trailingMargin" id="wIg-9c-7hE"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="currencyNameLabel" destination="WLH-22-mqV" id="RYF-8a-43T"/>
+                                            <outlet property="currencyRateLabel" destination="UBy-4a-SrG" id="SL4-TW-rja"/>
+                                            <outlet property="flagIconImageView" destination="2Wt-IC-PbW" id="qVP-Co-POY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

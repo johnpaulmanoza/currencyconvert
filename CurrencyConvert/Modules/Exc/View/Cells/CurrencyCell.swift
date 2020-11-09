@@ -10,11 +10,29 @@ import UIKit
 
 class CurrencyCell: UITableViewCell {
     
+    @IBOutlet weak var flagIconImageView: UIImageView!
+    @IBOutlet weak var currencyNameLabel: UILabel!
+    @IBOutlet weak var currencyRateLabel: UILabel!
+    
     public var data: CurrencyCellItem? {
         didSet {
             guard let currency = data?.currency else { return }
-            textLabel?.text = currency.currencySymbol
-            detailTextLabel?.text = "\(currency.currencyRate)"
+            flagIconImageView.image = UIImage(named: currency.currencySymbol)
+            currencyNameLabel.text = currency.currencySymbol
+            currencyRateLabel.text = "\(currency.currencyRate)"
         }
+    }
+    
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        
+        customize()
+    }
+    
+    private func customize() {
+        
+        // modify layout styles
+        flagIconImageView.elevate(elevation: 5.0)
     }
 }
