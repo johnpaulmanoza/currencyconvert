@@ -362,7 +362,8 @@ public class ExcService {
         let convertedValue = convert(sellAmount: amount, rate: currentRate)
         
         // 3. Deduct value to current wallet
-        deductAmountToCurrentWallet(amount: amount)
+        let deductions = shoulApplyFee ? amount + commissionFee : amount
+        deductAmountToCurrentWallet(amount: deductions)
 
         // 4. Create a balance to new/existing wallet
         createUpdateBalance(amount: convertedValue, symbol: currentSymbol)
