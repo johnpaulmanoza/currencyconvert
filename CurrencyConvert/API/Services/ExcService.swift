@@ -351,8 +351,8 @@ public class ExcService {
         
         let commissionFee = computeCommissionFee(sellAmount: amount, commissionRate: commissionRate)
         
-        // 1 Check if wallet has the sufficient value before conversion
-        guard wallet.walletBalanceAmount > amount else {
+        // 1 Check if wallet has the sufficient value before conversion to avoid negative values
+        guard wallet.walletBalanceAmount > (amount + commissionFee) else {
             completion(nil, nil, nil, "Insufficient Balance")
             return
         }
